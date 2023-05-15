@@ -1,17 +1,25 @@
-let counter = 0;
-let button = document.querySelector('button');
-let counterText = document.querySelector('.counter');
-let resetButton = document.querySelector('.reset');
+const counterEl = document.querySelector('[data-find="counterValue"]');
+const addOnePoolButton = document.getElementById("addOnePoolButton");
+const addTwoPoolButton = document.getElementById("addTwoPoolsButton");
+const resetButton = document.getElementById("resetButton");
 
-button.addEventListener('click', function() {
-    counter = counter + 1;
+// counterEl - 1;
+console.log(counterEl.dataset);
 
-    counterText.innerText = counter;
+const COUNTER_INITIAL_VALUE = 0;
 
+let counter = COUNTER_INITIAL_VALUE;
+counterEl.innerText = counter;
+
+addOnePoolButton.addEventListener("click", function () {
+  counter = counter + parseInt(addOnePoolButton.dataset.pools);
+  counterEl.innerText = counter;
 });
-
-resetButton.addEventListener('click', function() {
-    counter = 0;
-
-    counterText.innerText = counter;
+addTwoPoolButton.addEventListener("click", function () {
+  counter = counter + parseInt(addTwoPoolButton.dataset.pools);
+  counterEl.innerText = counter;
+});
+resetButton.addEventListener("click", function () {
+  counter = COUNTER_INITIAL_VALUE;
+  counterEl.innerText = counter;
 });
